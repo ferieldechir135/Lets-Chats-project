@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LET'S CHAT — Connexion</title>
+  <link rel="stylesheet" href="connexion.css">
+</head>
+<body>
+  
+    <div class="back">
+  <main class="container">
+    <!-- Left / Brand -->
+    <section class="brand">
+      <div class="brand-card">
+        <!-- logo image: put your logo file named 'logo.png' next to this HTML -->
+        <img src="image/photo_2025-10-20_19.00.14-removebg-preview.png" alt="Let's Chat logo" class="logo" />
+        
+        <p class="tag">Parlez. Partagez. Restez connectés avec vos amis.</p>
+        <p class="small-note">Interface de démonstration — toutes les actions sont simulées localement.</p>
+      </div>
+    </section>
+
+    <!-- Right / Login -->
+    <section class="auth">
+      <div class="auth-card">
+        <form id="loginForm" class="form">
+          <h2>Connexion</h2>
+
+          <label class="sr" for="loginEmail">Email ou téléphone</label>
+          <input id="loginEmail" name="loginEmail" type="text" placeholder="Email ou téléphone" required>
+
+          <label class="sr" for="loginPass">Mot de passe</label>
+          <input id="loginPass" name="loginPass" type="password" placeholder="Mot de passe" required>
+
+          <div class="actions">
+            <button class="btn primary" type="submit"><a href="index.html">Se connecter </a></button>
+            <button class="btn ghost" type="button" id="forgotBtn">Mot de passe oublié ?</button>
+          </div>
+
+          <div class="or"><span></span><strong>ou</strong><span></span></div>
+
+          <div class="create-block">
+            <p><strong>Nouvel le sur LET'S CHAT ?</strong></p>
+            <button class="btn accent" id="createAccountBtn" type="button">Créer un compte</button>
+          </div>
+        </form>
+
+        
+      </div>
+    </section>
+   
+  </main>
+ 
+  <!-- Modal: Forgot password -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal">
+      <h3>Récupérer le mot de passe</h3>
+      <p class="note">Entrez l'adresse e-mail ou le numéro associé au compte.</p>
+      <input id="recoverInput" placeholder="ex: ikram@example.com">
+      <div class="modal-actions">
+        <button class="btn ghost" id="modalCancel">Annuler</button>
+        <button class="btn primary" id="modalSend">Envoyer</button>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <!-- Modal: Create account -->
+  <div class="modal-backdrop" id="createBackdrop" aria-hidden="true">
+    <div class="modal">
+      <h3>Créer un compte LET'S CHAT</h3>
+      <form id="createForm">
+        <div class="row">
+          <input id="firstName" placeholder="Prénom" required>
+          <input id="lastName" placeholder="Nom" required>
+        </div>
+        <input id="newEmail" placeholder="Email ou téléphone" required>
+        <input id="newPass" placeholder="Mot de passe (min 6 chars)" type="password" minlength="6" required>
+
+        <div class="modal-actions">
+          <button type="button" class="btn ghost" id="createCancel">Annuler</button>
+          <button class="btn accent" type="submit">S'inscrire</button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+
+  <script>
+    // Modal controls + simulated actions (no backend)
+    const modal = document.getElementById('modalBackdrop');
+    const createModal = document.getElementById('createBackdrop');
+
+    document.getElementById('forgotBtn').addEventListener('click', () => {
+      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false');
+      document.getElementById('recoverInput').focus();
+    });
+    document.getElementById('modalCancel').addEventListener('click', () => {
+      modal.style.display = 'none'; modal.setAttribute('aria-hidden','true');
+    });
+    document.getElementById('modalSend').addEventListener('click', () => {
+      const val = document.getElementById('recoverInput').value.trim();
+      if (!val) { alert('Veuillez entrer votre email ou téléphone.'); return; }
+      alert('Lien de récupération (simulé) envoyé à: ' + val);
+      modal.style.display = 'none'; modal.setAttribute('aria-hidden','true');
+    });
+
+    document.getElementById('createAccountBtn').addEventListener('click', () => {
+      createModal.style.display = 'flex'; createModal.setAttribute('aria-hidden','false');
+      document.getElementById('firstName').focus();
+    });
+    document.getElementById('createCancel').addEventListener('click', () => {
+      createModal.style.display = 'none'; createModal.setAttribute('aria-hidden','true');
+    });
+
+    // Simulated form submissions
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      if (!email) { alert('Remplissez les champs.'); return; }
+      alert('Connexion simulée pour: ' + email);
+    });
+
+    document.getElementById('createForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Compte créé (simulé). Bienvenue sur LET\'S CHAT !');
+      createModal.style.display = 'none'; createModal.setAttribute('aria-hidden','true');
+    });
+
+    // Close modals when clicking outside
+    document.querySelectorAll('.modal-backdrop').forEach(back => {
+      back.addEventListener('click', (ev) => { if (ev.target === back) { back.style.display = 'none'; back.setAttribute('aria-hidden','true'); }});
+    });
+  </script>
+  
+</body>
+<!-- ✅ Footer -->
+  <footer class="footer">
+    <p class="legal">
+      En continuant, vous acceptez nos
+      <a href="#">Conditions</a> et notre
+      <a href="#">Politique de confidentialité</a>.
+    </p>
+  </footer>
+  </div>
+</body>
+</html>
+</html>

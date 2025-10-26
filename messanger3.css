@@ -1,0 +1,227 @@
+/* Base Styling and Variables */
+:root {
+    --color-dark-bg: #e8eaf5; /* Deep blue-black background */
+    --color-sidebar-bg: #741849; /* Slightly lighter for sidebar */
+    --color-chat-bubble-left: #ea092e; /* Dark bubble for others */
+    --color-chat-bubble-right: #cbc552; /* Bright blue bubble for user */
+    --color-text-primary: #f0f0f0; /* Light text */
+    --color-text-secondary: #929b9cfb; /* Muted text */
+    --color-accent:#d485d2;
+    --color-active-item: #d485; /* Semi-transparent blue for active state */
+    --blur-effect: #d485d2; /* Used for areas that look slightly blurred/frosted */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-primary);
+    /* Mimic the subtle overall background gradient/texture from the image */
+    background-image: radial-gradient(circle at center, rgba(30, 40, 70, 0.5) 0%, var(--color-dark-bg) 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Keep the screen clean */
+}
+
+/* App Container (The main window) */
+.app-container {
+    display: flex;
+    width: 95vw; /* Adjust as needed */
+    max-width: 1400px;
+    height: 90vh;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--blur-effect);
+    /* This border/box-shadow tries to mimic the glowing edge */
+    box-shadow: 0 0 40px rgba(0, 120, 255, 0.3), 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Backdrop filter creates the "frosted glass" effect */
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 1. Sidebar Styling */
+.sidebar {
+    width: 300px; /* Width of the sidebar */
+    background-color: var(--color-sidebar-bg);
+    padding: 20px;
+    border-right: 1px solid rgba(240, 16, 16, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 3px solid var(--color-accent); /* Blue border effect */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-info h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.user-info p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.status-message {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chats-section h4 {
+    color: var(--color-text-secondary);
+    font-size: 11px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+  
+}
+
+
+.chat-item:hover, .chat-item.active {
+    background-color: var(--color-active-item);
+    padding: 7px;
+}
+a{
+    text-decoration: none;
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-details {
+    flex-grow: 1;
+}
+
+.chat-details .name {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.chat-details .last-message {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timestamp {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
+/* 2. Main Chat Area Styling */
+.chat-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    /* This background is the dark part behind the messages */
+    background-color: white;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-bottom: 3px solid  rgb(196, 195, 195);
+   
+} 
+.contact-info{
+    display: flex;
+    
+   
+}
+.name{
+    color: black;
+}
+.messageleft{
+  color: black;
+  width: 500px;
+  height: 250px;
+  padding: 20px;
+  background-color:pink;
+  margin: 10px;
+  border-radius: 30px;
+}
+
+.message-input-area{
+    display: flex;
+    margin-top: 160px;
+
+}
+.input{
+    width: 750px;
+    border-radius: 30px;
+    height: 40px;
+    background-color: rgb(227, 217, 217);
+    display: flex;
+    justify-content: space-between;
+   
+}
+input{
+    border-radius: 7px;
+    width: 650px;
+    background-color: rgb(227, 217, 217);
+    color: gray;
+    padding-left: 10px; 
+    font-size: 15px;
+    border: none;
+    outline: none;
+} 
+.input .material-symbols-outlined{
+     color: black;
+     padding-right: 5px;
+     padding-top: 5px;
+}
+.input-icons{
+    color: black;
+   justify-content: space-between;
+   padding-top: 7px;
+   display: flex;
+  margin-left: 20px;
+}

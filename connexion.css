@@ -1,0 +1,266 @@
+/* Palette inspired from provided logo */
+:root{
+  --bg: #f3ecf3;            /* soft page background */
+  --pink: #ff268b;          /* vibrant magenta from logo */
+  --navy: #000507;          /* deep navy/dark teal from logo */
+  --card: #ffffff;
+  --muted: #61707a;
+  --glass: rgba(5,37,50,0.06);
+}
+
+/* Reset & base */
+*{box-sizing:border-box;
+    font-family:Inter, Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e4e0e4 0%, #ff268b 40%, #fff8ff 80%);
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+}
+
+/* لإضافة لمسة ضبابية ناعمة */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3), transparent 60%);
+  backdrop-filter: blur(60px);
+  z-index: 0;
+}
+
+/* نخلي الكارت فوق الخلفية */
+.container, .auth-card, .brand-card {
+  position: relative;
+  z-index: 1;
+}
+
+/* Layout */
+.container{
+    width:100%;
+    max-width:1100px;
+    display:flex;
+    gap:28px;
+    align-items:stretch;
+}
+.brand{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center}
+.auth{
+    width:380px;
+}
+
+/* Cards */
+.brand-card, .auth-card{
+  background:var(--card);
+  border-radius:14px;
+  padding:34px;
+  box-shadow:0 8px 30px rgba(6,20,30,0.08);
+}
+
+/* Brand area */
+.logo{
+    width:120px;
+    height:auto;
+    display:block;
+    margin-bottom:14px;
+}
+.brand-card h1{
+    color:var(--navy);
+    font-size:34px;
+    margin:0 0 8px;
+    letter-spacing:1px;
+}
+.tag{
+    color:black;
+    margin:0 0 14px;
+    font-size:16px;
+}
+.small-note{
+    color:black;
+    font-size:13px;
+}
+
+/* Auth card */
+.auth-card h2{
+    margin:0 0 14px;
+    color:var(--navy);
+    font-size:22px;
+}
+.form input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e6eef6;
+  margin-bottom: 15px;
+  font-size: 15px;
+  background: #fff;
+}
+
+.form input:focus {
+  border-color: var(--pink);
+  outline: none;
+}
+
+.auth h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+/* إخفاء label */
+.sr {
+  display: none;
+}
+
+/* 🔘 الأزرار */
+.actions {
+  display: flex;
+  flex-direction: column; /* يخلّي الأزرار وحدة فوق وحدة */
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  border: none;
+  transition: 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+/* زر الاتصال */
+.btn.primary {
+  background: black;
+  color: #ebd8d8;
+}
+
+.btn.primary:hover {
+  background: #758184;
+}
+
+/* زر نسيت كلمة المرور */
+.btn.ghost {
+  background: transparent;
+  border: none;
+  color: #ff4ca2;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.btn.ghost:hover {
+  color: #d485d2;
+}
+/* "or" divider */
+.or{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:10px 0;
+}
+.or span{
+    flex:1;
+    height:1px;
+    background:#b7b9be;
+}
+.or strong{
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* create block */
+.create-block{
+    text-align:center;
+    padding:12px;
+    border-radius:10px;
+    background:var(--glass);
+    margin-top:6px;
+}
+.legal {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-top: 60px;
+  margin-bottom: 15px;
+}
+
+.legal a {
+  color: var(--pink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal a:hover {
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal-backdrop{
+    position:fixed;
+    inset:0;display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(4,20,30,0.35);
+    padding:20px;
+    z-index:60;
+}
+.modal{
+    background:var(--card);
+    padding:20px;
+    border-radius:12px;
+    width:420px;
+    max-width:96%;
+    box-shadow:0 10px 40px rgba(2,10,20,0.4);
+}
+.modal h3{ 
+    margin:0 0 8px;
+    color:var(--navy);
+}
+.modal .note{
+    margin:0 0 12px;
+    color:var(--muted);
+    font-size:14px;
+}
+.modal input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d4dbe1;
+    margin-bottom:8px;
+}
+
+/* modal actions */
+.modal-actions{display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:6px;
+}
+
+/* responsiveness */
+@media (max-width:900px){
+  .container{
+    flex-direction:column;
+    align-items:stretch;
+}
+  .auth{
+    width:100%;
+}
+  .brand{
+    order:2;
+}
+}
